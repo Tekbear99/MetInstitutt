@@ -95,7 +95,7 @@ def main(timer):
         print('Closing Socket...')
         sock.close()
         print('Socket closed!')
-        main()
+        main(timer)
 
 
 #Start of program
