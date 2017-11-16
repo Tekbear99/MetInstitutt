@@ -1,4 +1,4 @@
-# Imports
+# Imported modules
 import socket
 import sys
 import pymysql
@@ -8,7 +8,7 @@ import datetime
 import os
 import threading
 
-# Setting an array for holding all measurements for one minute
+# Setting an array for holding all 12 measurements for one minute
 minuteMeasurements = []
 
 # Constants
@@ -121,7 +121,7 @@ def main():
             # If array is not longer than or equal to 12: ignore this is/else statement
             pass
 
-        # updateTimer.enter(5, 1, main, (timer,))
+        # Wait 5 seconds before restarting function
         time.sleep(5)
 
     # In case of error while sending or receiving data, try closing socket an rebooting
@@ -140,7 +140,7 @@ def main():
 
 
 
-#--------Start of program--------#
+#------------------------Start of program------------------------#
 print("Connecting...")
 
 # Making sure that the connection is made before sending data
