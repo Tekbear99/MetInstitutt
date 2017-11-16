@@ -1,6 +1,7 @@
 # Imports
 import socket
 import sys
+import pymysql
 import time
 import math
 import sched
@@ -29,6 +30,12 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # Connect the socket to the port where the server is listening
 ip = "37.26.220.85"
 port = 4002
+
+# Connect to the database
+db = pymysql.connect("193.93.253.25","codespo","45Pvilfd","codespo_metinstitutt")
+
+# Prepare a cursor object using cursor() method for the database
+cursor = db.cursor()
 
 # Function for shutting down system if ConnectionError
 def systemShutdown():
@@ -95,6 +102,23 @@ def main():
 
             # Rounding off average temperature to two decimal
             avrgTemp = float("%.2f" % avrgMeasurement)
+
+            # Prepare SQL query to INSERT a record into the database.
+            sql = "INSERT INTO data_main_min(TIMESTAMP, OHM, CELSIUS, UPTIME, DOWNTIME) \
+                     VALUES ('%s', '%f', '%f', '%i', '%i')" % \
+                     (timestamp, R, avrgTemp, 1, 0)
+            try:
+               # Execute the SQL command
+               cursor.execute(sql)
+               # Commit your changes in the database
+               db.commit()
+               print("Data is sent to database")
+            except:
+               # Rollback in case there is any error
+               db.rollback()
+               print("Database Error: Not sending data to database")
+
+            # Print result to console
             print(timestamp + "   " + str(avrgTemp))
 
             # Clearing array for measurements for next minute
