@@ -4,7 +4,6 @@ import sys
 import pymysql
 import time
 import math
-import sched
 import datetime
 import os
 import threading
@@ -17,12 +16,6 @@ R_0 = 100
 a = 3.9083 * (10**(-3))
 b = -5.775 * (10**(-7))
 
-#----------------Previous time-function----------------#
-
-    #Creating a function to time sending of code #04
-    #updateTimer = sched.scheduler(time.time, time.sleep)
-
-#------------------------------------------------------#
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -172,11 +165,3 @@ except ConnectionRefusedError:
 
     # Shutting down program if connection to server fails
     systemShutdown()
-
-#----------------Previous time-function----------------#
-
-# Calling the function Main after time: 5 seconds
-#updateTimer.enter(5, 1, main, (updateTimer,))
-#updateTimer.run()
-
-#------------------------------------------------------#
