@@ -98,22 +98,21 @@ def main():
             # Rounding off average temperature to two decimal
             avrgTemp = float("%.2f" % avrgMeasurement)
 
-"""
             # Prepare SQL query to INSERT a record into the database.
-            sql = "INSERT INTO data_main_min(TIMESTAMP, OHM, CELSIUS, UPTIME, DOWNTIME) \
-                     VALUES ('%s', '%f', '%f', '%i', '%i')" % \
-                     (timestamp, R, avrgTemp, 1, 0)
-            try:
+#            sql = "INSERT INTO data_main_min(TIMESTAMP, OHM, CELSIUS, UPTIME, DOWNTIME) \
+#                     VALUES ('%s', '%f', '%f', '%i', '%i')" % \
+#                     (timestamp, R, avrgTemp, 1, 0)
+#            try:
                # Execute the SQL command
-               cursor.execute(sql)
+#               cursor.execute(sql)
                # Commit your changes in the database
-               db.commit()
-               print("Data is sent to database")
-            except:
+#               db.commit()
+#               print("Data is sent to database")
+#            except:
                # Rollback in case there is any error
-               db.rollback()
-               print("Database Error: Not sending data to database")
-"""
+#               db.rollback()
+#               print("Database Error: Not sending data to database")
+
             # Print result to console
             print(timestamp + "   " + str(avrgTemp))
 
@@ -157,8 +156,9 @@ try:
 
     print("Connected to", ip, "with port", port, "@", connectionTime)
     print("---------------------------------------------------")
-    main()
 
+    main()
+    
 # In case of Connection Error, shutdown program
 except ConnectionRefusedError:
     print()
