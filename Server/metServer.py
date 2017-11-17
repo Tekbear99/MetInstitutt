@@ -24,11 +24,13 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ip = "37.26.220.85"
 port = 4002
 
+"""
 # Connect to the database
-# db = pymysql.connect("193.93.253.25","codespo","45Pvilfd","codespo_metinstitutt")
+db = pymysql.connect("193.93.253.25","codespo","45Pvilfd","codespo_metinstitutt")
 
 # Prepare a cursor object using cursor() method for the database
-# cursor = db.cursor()
+cursor = db.cursor()
+"""
 
 # Function for shutting down system if ConnectionError
 def systemShutdown():
