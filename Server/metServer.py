@@ -25,10 +25,10 @@ ip = "37.26.220.85"
 port = 4002
 
 # Connect to the database
-db = pymysql.connect("193.93.253.25","codespo","45Pvilfd","codespo_metinstitutt")
+# db = pymysql.connect("193.93.253.25","codespo","45Pvilfd","codespo_metinstitutt")
 
 # Prepare a cursor object using cursor() method for the database
-cursor = db.cursor()
+# cursor = db.cursor()
 
 # Function for shutting down system if ConnectionError
 def systemShutdown():
@@ -96,6 +96,7 @@ def main():
             # Rounding off average temperature to two decimal
             avrgTemp = float("%.2f" % avrgMeasurement)
 
+"""
             # Prepare SQL query to INSERT a record into the database.
             sql = "INSERT INTO data_main_min(TIMESTAMP, OHM, CELSIUS, UPTIME, DOWNTIME) \
                      VALUES ('%s', '%f', '%f', '%i', '%i')" % \
@@ -110,7 +111,7 @@ def main():
                # Rollback in case there is any error
                db.rollback()
                print("Database Error: Not sending data to database")
-
+"""
             # Print result to console
             print(timestamp + "   " + str(avrgTemp))
 
