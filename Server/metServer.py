@@ -45,6 +45,9 @@ def main():
     # Setting an alternative timer to run code every 5 seconds
     threading.Timer(5.0, main).start()
 
+    # Setting timer to force script reboot every 3 hours to prevent WinError 10060
+    threading.Timer(10800.0, systemReboot).start()
+
     try:
 
         # Send data
@@ -164,4 +167,4 @@ except ConnectionRefusedError:
     print('Could not connect to IP: ' + str(ip) + ' port: ' + str(port))
 
     # Shutting down program if connection to server fails
-    systemShutdown()
+    systemReboot()
