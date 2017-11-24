@@ -1,14 +1,14 @@
-# Imports
+# Imported modules
 import socket
 import sys
+import pymysql
 import time
 import math
-import sched
 import datetime
 import os
 import threading
 
-# Setting an array for holding all measurements for one minute
+# Setting an array for holding all 12 measurements for one minute
 minuteMeasurements = []
 
 # Constants
@@ -16,19 +16,19 @@ R_0 = 100
 a = 3.9083 * (10**(-3))
 b = -5.775 * (10**(-7))
 
-#----------------Previous time-function----------------#
-
-    #Creating a function to time sending of code #04
-    #updateTimer = sched.scheduler(time.time, time.sleep)
-
-#------------------------------------------------------#
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Connect the socket to the port where the server is listening
-ip = "37.26.220.85"
+#ip = '37.26.220.85'
 port = 4002
+
+# Connect to the database
+#db = pymysql.connect("193.93.253.25","codespo","45Pvilfd","codespo_metinstitutt")
+
+# Prepare a cursor object using cursor() method for the database
+#cursor = db.cursor()
 
 # Function for shutting down system if ConnectionError
 def systemShutdown():
@@ -95,6 +95,23 @@ def main():
 
             # Rounding off average temperature to two decimal
             avrgTemp = float("%.2f" % avrgMeasurement)
+
+            # Prepare SQL query to INSERT a record into the database.
+            sql = "INSERT INTO data_main_min(TIMESTAMP, OHM, CELSIUS, UPTIME, DOWNTIME) \
+                     VALUES ('%s', '%f', '%f', '%i', '%i')" % \
+                     (timestamp, R, avrgTemp, 1, 0)
+#            try:
+               # Execute the SQL command
+#               cursor.execute(sql)
+               # Commit your changes in the database
+#               db.commit()
+#               print("Data is sent to database")
+#            except:
+               # Rollback in case there is any error
+#               db.rollback()
+#               print("Database Error: Not sending data to database")
+
+            # Print result to console
             print(timestamp + "   " + str(avrgTemp))
 
             # Clearing array for measurements for next minute
@@ -104,7 +121,7 @@ def main():
             # If array is not longer than or equal to 12: ignore this is/else statement
             pass
 
-        # updateTimer.enter(5, 1, main, (timer,))
+        # Wait 5 seconds before restarting function
         time.sleep(5)
 
     # In case of error while sending or receiving data, try closing socket an rebooting
@@ -123,19 +140,19 @@ def main():
 
 
 
-#--------Start of program--------#
+#------------------------Start of program------------------------#
 print("Connecting...")
 
 # Making sure that the connection is made before sending data
 try:
 
     # Connecting to the server via socket
-    sock.connect((ip, port))
+    sock.connect(('37.26.220.85', port))
 
     # Setting the time of connetion to the server if successful
     connectionTime = '{:%H:%M:%S}'.format(datetime.datetime.now())
 
-    print("Connected to", ip, "with port", port, "@", connectionTime)
+    print("Connected to 37.26.220.85", "with port", port, "@", connectionTime)
     print("---------------------------------------------------")
     main()
 
@@ -144,15 +161,10 @@ except ConnectionRefusedError:
     print()
     print()
     print('Connection failed')
-    print('Could not connect to IP: ' + str(ip) + ' port: ' + str(port))
+    print('Could not connect to IP: ' + '37.26.220.85 ' + ' port: ' + str(port))
 
-    # Shutting down program if connection to server fails
-    systemShutdown()
+    # Waiting 15 seconds before trying to reboot program
+    time.sleep(15)
 
-#----------------Previous time-function----------------#
-
-# Calling the function Main after time: 5 seconds
-#updateTimer.enter(5, 1, main, (updateTimer,))
-#updateTimer.run()
-
-#------------------------------------------------------#
+    # Rebooting program if connection to server fails
+    systemReboot()
