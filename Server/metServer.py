@@ -46,7 +46,7 @@ def main():
     threading.Timer(5.0, main).start()
 
     # Setting timer to force script reboot every 2 hours to prevent WinError 10060
-    threading.Timer(7200.0, systemReboot).start()
+    threading.Timer(60.0, systemReboot).start()
 
     try:
 
