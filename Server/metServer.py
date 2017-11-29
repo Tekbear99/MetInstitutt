@@ -143,7 +143,7 @@ def main():
 
                 # Rebooting program when program fails
                 systemReboot()
-    except WindowsError:
+    except OSError:
 
         #Rebooting program if receiving message about WinError
         systemReboot()
