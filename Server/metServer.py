@@ -43,7 +43,7 @@ def systemReboot():
 def main():
 
     #Try to run main function
-    try:
+#    try:
 
         # Setting a timer to run function every 5 seconds
         threading.Timer(5.0, main).start()
@@ -144,10 +144,10 @@ def main():
                 # Rebooting program when program fails
                 systemReboot()
 
-    except OSError:
+#    except OSError:
 
         # Rebooting program if WinError
-        systemReboot()
+    #    systemReboot()
 
 
 #------------------------Start of program------------------------#
