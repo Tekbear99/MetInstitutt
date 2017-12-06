@@ -97,7 +97,9 @@ def mainframe():
                 avrgTemp = float('%.2f' % avrgMeasurement)
 
                 # Prepare SQL query to INSERT a record into the database
-                sql = 'INSERT INTO data_main-min(TIMESTAMP, OHM, CELSIUS, UPTIME, DOWNTIME) VALUES ('%s', '%f', '%f', '%i', '%i')' % (timestamp, R, avrgTemp, 1, 0)
+                sql = 'INSERT INTO data_main-min(TIMESTAMP, OHM, CELSIUS, UPTIME, DOWNTIME) \
+                    VALUES ('%s', '%f', '%f', '%i', '%i')' % \
+                    (timestamp, R, avrgTemp, 1, 0)
 
                 try:
 
