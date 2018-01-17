@@ -8,9 +8,9 @@ Foreløpig finnes det ingen informasjon for å komme i gang. Dette vil legges ut
 
 ## Authors
 
-* **Mathias Helseth** - *UI | Front-end* - [TekBear99](https://github.com/Tekbear99)
-* **Philip Eglin** - *Back-end | Python* - [IPEglin](https://github.com/Ipeglin)
-* **Hemund Engmark** - *UI* - [Jobbob](https://github.com/Jobbob)
+* **Mathias Helseth** - *Python | Database* - [TekBear99](https://github.com/Tekbear99)
+* **Philip Eglin** - *Python | Back-end* - [IPEglin](https://github.com/Ipeglin)
+* **Hemund Engmark** - *UI | Article* - [Jobbob](https://github.com/Jobbob)
 
 See also the list of [contributors](https://github.com/Tekbear99/MetInstitutt/contributors) who participated in this project.
 
