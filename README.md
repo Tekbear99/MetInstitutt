@@ -2,9 +2,10 @@
 
 Vi skal utvikle et program som kan sende ett signal til værstasjonen vår på Blindern og samle inn data hvert femte sekund. Denne dataen skal samles i gjennomsnitt per minutt og legges ut på en nettside hvor vi sammenlikner dataen med dataen fra meteorologisk institutt.  
 
-## Komme i gang
+## Publikasjoner
 
-Foreløpig finnes det ingen informasjon for å komme i gang. Dette vil legges ut når prosjektet er ferdigstilt.
+Prosjektet ble publisert i det vitenskapelige tidsskriftet SPISS for elever ved Teknologi og Forskningslære 2.
+[SPISS](https://boap.uib.no/index.php/spiss/article/view/1417)
 
 ## Authors
 
