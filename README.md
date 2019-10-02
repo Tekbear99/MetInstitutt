@@ -4,7 +4,7 @@ Vi skal utvikle et program som kan sende ett signal til værstasjonen vår på B
 
 ## Publikasjoner
 
-Prosjektet ble publisert i det vitenskapelige tidsskriftet SPISS for elever ved Teknologi og Forskningslære 2.
+Prosjektet ble publisert i det vitenskapelige tidsskriftet SPISS.
 [SPISS](https://boap.uib.no/index.php/spiss/article/view/1417)
 
 ## Authors
